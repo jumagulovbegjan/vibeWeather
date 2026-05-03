@@ -1,0 +1,251 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 🌌 BODY */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+/* 🎥 VIDEO BACKGROUND */
+.img1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* 🌐 CONTAINER */
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 💎 MAIN GLASS */
+.glass {
+  width: 900px;
+  height: 520px;
+  border-radius: 40px;
+  padding: 50px;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(4px);
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+}
+
+/* ⏰ TIME BLOCK */
+.glass_info {
+  padding: 20px 40px;
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ⏰ SOAT */
+#vaqt {
+  font-size: 60px;
+  letter-spacing: 3px;
+}
+
+/* 📅 DATE */
+.data {
+  margin-top: 10px;
+}
+
+#days {
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+/* 🌤️ WEATHER CARD */
+.ob_havo {
+  position: relative;
+  width: 500px;
+  padding: 25px;
+
+  border-radius: 25px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(15px);
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+
+  text-align: center;
+
+  transition: 0.4s;
+}
+
+/* hover */
+.ob_havo:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+/* 🌡️ title */
+#info {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+/* 📊 details */
+#abhavo {
+  font-size: 18px;
+  line-height: 1.6;
+
+  padding: 15px;
+  border-radius: 15px;
+
+  background: rgba(255,255,255,0.2);
+}
+
+/* ✨ GLOW EFFECT */
+.ob_havo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 25px;
+   
+  background: linear-gradient(45deg, #00f2fe, #4facfe, #43e97b);
+  opacity: 0.2;
+  filter: blur(30px);
+  z-index: -1;
+}
+
+/* 🔥 smooth animation */
+.glass, .ob_havo {
+  transition: all 0.4s ease;
+}
+/* 💻 Large (kompyuter) */
+@media (max-width: 1200px) {
+  .glass {
+    gap: 15px;
+    width: 800px;
+    height: auto;
+  }
+}
+
+/* 💻 Notebook */
+@media (max-width: 992px) {
+  .glass {
+    gap: 15px;
+    width: 90%;
+    height: auto;
+    padding: 20px;
+  }
+
+  #vaqt {
+    font-size: 50px;
+  }
+}
+
+/* 📱 Tablet */
+@media (max-width: 768px) {
+  .glass {
+    gap: 15px;
+    width: 95%;
+    padding: 20px;
+  }
+
+  #vaqt {
+    font-size: 40px;
+  }
+
+  .ob_havo {
+    width: 100%;
+  }
+}
+
+/* 📱 Telefon (oddiy) */
+@media (max-width: 576px) {
+  .glass {
+    gap: 15px;
+    border-radius: 20px;
+    padding: 15px;
+  }
+
+  #vaqt {
+    font-size: 32px;
+  }
+
+  #days {
+    font-size: 16px;
+  }
+
+  .ob_havo {
+    padding: 20px;
+  }
+
+  #info {
+    font-size: 24px;
+  }
+
+  #abhavo {
+    font-size: 16px;
+  }
+}
+
+/* 📱 iPhone 5 (kichkina ekran ~320px) */
+@media (max-width: 400px) {
+  .glass {
+    gap: 15px;
+    padding: 10px;
+  }
+
+  #vaqt {
+    font-size: 26px;
+  }
+
+  #info {
+    font-size: 20px;
+  }
+
+  #abhavo {
+    font-size: 14px;
+  }
+}
+@media (max-width: 992px) {
+  .img1 {
+    object-fit: cover;
+  }
+}
+
+/* 📱 Tablet */
+@media (max-width: 768px) {
+  .img1 {
+    object-fit: cover;
+  }
+}
+
+/* 📱 Telefon */
+@media (max-width: 576px) {
+  .img1 {
+    object-fit: cover;
+  }
+}
+
+/* 📱 iPhone 5 (320px) */
+@media (max-width: 400px) {
+  .img1 {
+    object-fit: cover;
+  }
+}

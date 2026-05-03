@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Vibe weather</title>
+</head>
+<body>
+    <div class="container">
+<video id="video" class="img1" src="" autoplay muted loop playsinline></video>
+
+      <div class="glass">
+        <div class="glass_info">
+            <h2 id="vaqt">00:00</h2>
+            <p id="days"></p>
+            
+        </div>                                
+
+         
+
+       
+       
+        <div class="ob_havo">
+          <h1>Toshkent</h1>
+      <p id="info"></p>
+      <div id="abhavo"></div>
+    </div>
+      </div>
+
+    
+    </div>
+    <script>  
+        
+let day;
+
+switch (new Date().getDay()){
+   case 0:
+    day = "Sunday";
+    break;
+  case 1:
+    day = "Monday";
+    break;
+  case 2:
+    day = "Tuesday";
+    break;
+  case 3:
+    day = "Wednesday";
+    break;
+  case 4:
+    day = "Thursday";
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case  6:
+    day = "Saturday";
+}
+document.getElementById("days").innerHTML = "today is "+ day
+
+
+
+async function add(params) {
+  
+  try {
+    let url = "https://api.open-meteo.com/v1/forecast?latitude=41.31&longitude=69.24&current_weather=true";
+    let res = await fetch(url)
+    let data = await res.json()
+    let weather = data.current_weather
+    console.log(data);
+    
+
+let video = document.querySelector(".img1")
+let img = document.querySelector(".info")
+    document.getElementById("abhavo").innerHTML = 
+     "🌡️ Harorat: " + weather.temperature + "°C <br>" 
+     
+      "💨 Shamol tezligi: " + weather.windspeed + " km/h <br>" 
+      let code = weather.weathercode
+      if(code === 0){
+       document.getElementById("info").innerHTML = "☀️"
+       video.src = "./video/video1.mp4"
+     }else if(code >= 1 && code <= 3){
+        document.getElementById("info").innerHTML= "☁️"
+        video.src= "./video/video5.mp4"
+     }  else if(code >= 51 && code <= 65){
+           document.getElementById("info").innerHTML = "🌧"
+            video.src = "./video/video2.mp4" 
+
+     }else if(code >= 71 && code <= 75){
+      document.getElementById("info").innerHTML = "❄️"
+       video.src = "./video/video4.mp4"
+     }else if(code >= 80 && code <= 82){
+      document.getElementById("info").innerHTML = "⛈"
+      video.src = "./video/video6.mp4"
+     }else if(code >= 95 && code <= 99){
+      document.getElementById("info").innerHTML = "⛈️"
+      video.src ="./video/video7.mp4"
+     }
+  } catch (error) {
+    document.getElementById("abhovo").innerHTML = "hato"
+  }
+}
+
+add()
+setInterval(clock, 1000)
+
+function clock(){
+  let d = new Date()
+  document.getElementById("vaqt").innerHTML = d.getHours(function backround(){
+        backround
+  }) + ":"+
+  d.getMinutes()+ ":"+
+  d.getSeconds()
+}
+
+
+
+async function data(params) {
+  let res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=41.31&longitude=69.24&current_weather=true`)
+  let data = await res.text()
+  console.log(data);
+
+  document.getElementById("data").innerHTML = data
+  
+}
+
+
+
+
+  
+
+document.getElementById("play").innerHTML = result
+      
+  </script>
+</body>
+</html>
